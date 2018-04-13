@@ -460,7 +460,7 @@ static const char *const yytname[] =
 {
   "$end", "error", "$undefined", "MUNICIPIO_PRESTADOR",
   "MUNICIPIO_GERADOR", "VALOR_SERVICO", "ISS_RETIDO", "IGNORA1", "CIDADE",
-  "NUMERO", "$accept", "BELEM", "DADOS", YY_NULLPTR
+  "NUMERO", "$accept", "PROGRAMA", "DADOS_BELEM", YY_NULLPTR
 };
 #endif
 
