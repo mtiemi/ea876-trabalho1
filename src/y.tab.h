@@ -45,23 +45,17 @@ extern int yydebug;
 # define YYTOKENTYPE
   enum yytokentype
   {
-    MUNICIPIO_PRESTADOR = 258,
-    MUNICIPIO_GERADOR = 259,
-    VALOR_SERVICO = 260,
-    ISS_RETIDO = 261,
-    IGNORA1 = 262,
-    CIDADE = 263,
-    NUMERO = 264
+    ABRETAG = 258,
+    FECHATAG = 259,
+    STRING = 260,
+    NUMERO = 261
   };
 #endif
 /* Tokens.  */
-#define MUNICIPIO_PRESTADOR 258
-#define MUNICIPIO_GERADOR 259
-#define VALOR_SERVICO 260
-#define ISS_RETIDO 261
-#define IGNORA1 262
-#define CIDADE 263
-#define NUMERO 264
+#define ABRETAG 258
+#define FECHATAG 259
+#define STRING 260
+#define NUMERO 261
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
@@ -73,7 +67,7 @@ union YYSTYPE
     char* string;
     float number;
 
-#line 77 "src/y.tab.h" /* yacc.c:1909  */
+#line 71 "src/y.tab.h" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;

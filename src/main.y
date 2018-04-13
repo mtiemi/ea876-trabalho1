@@ -9,7 +9,7 @@ int yylex(void);
 
 %}
 
-%token MUNICIPIO_PRESTADOR MUNICIPIO_GERADOR VALOR_SERVICO ISS_RETIDO IGNORA1
+%token ABRETAG FECHATAG
 
 %union
 {
@@ -17,19 +17,25 @@ int yylex(void);
     float number;
 }
 
-%token <string> CIDADE
+%token <string> STRING
 %token <number> NUMERO
 %%
 
 PROGRAMA: 
-        PROGRAMA DADOS_BELEM
+        PROGRAMA TAG {printf("Terminei.");}
         |
         ;
-
-DADOS_BELEM:   
-        IGNORA1 MUNICIPIO_PRESTADOR CIDADE MUNICIPIO_PRESTADOR IGNORA1 MUNICIPIO_GERADOR CIDADE MUNICIPIO_GERADOR IGNORA1 VALOR_SERVICO NUMERO VALOR_SERVICO ISS_RETIDO NUMERO ISS_RETIDO IGNORA1 { printf("%s, %s, %.2f, %.2f\n", $7, $3, $11, $14);}             
-
-                       
+ELEMENTO:
+        STRING
+        | NUMERO
+        | TAG
+        | ELEMENTO ELEMENTO
+        ;
+TAG:
+    ABRETAG ELEMENTO FECHATAG
+    ;        
+;
+                    
 %%
 
 void yyerror(char *s) 
