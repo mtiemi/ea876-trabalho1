@@ -45,29 +45,37 @@ extern int yydebug;
 # define YYTOKENTYPE
   enum yytokentype
   {
-    ABRETAG = 258,
-    FECHATAG = 259,
-    STRING = 260,
-    NUMERO = 261
+    FECHATAG = 258,
+    BELEM_PRESTADOR_TAG = 259,
+    BELEM_TOMADOR_TAG = 260,
+    BELEM_SERVICO_TAG = 261,
+    BELEM_ISS_TAG = 262,
+    STRING = 263,
+    ABRETAG = 264,
+    NUMERO = 265
   };
 #endif
 /* Tokens.  */
-#define ABRETAG 258
-#define FECHATAG 259
-#define STRING 260
-#define NUMERO 261
+#define FECHATAG 258
+#define BELEM_PRESTADOR_TAG 259
+#define BELEM_TOMADOR_TAG 260
+#define BELEM_SERVICO_TAG 261
+#define BELEM_ISS_TAG 262
+#define STRING 263
+#define ABRETAG 264
+#define NUMERO 265
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 
 union YYSTYPE
 {
-#line 15 "src/main.y" /* yacc.c:1909  */
+#line 19 "src/main.y" /* yacc.c:1909  */
 
     char* string;
     float number;
 
-#line 71 "src/y.tab.h" /* yacc.c:1909  */
+#line 79 "src/y.tab.h" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;

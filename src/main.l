@@ -14,28 +14,42 @@ IGNORA .*[\n]*
 NOME [A-Z]+[_]*
 %%
 
-[<]{NOME}+[>] { printf("tag:%s", yytext);return ABRETAG;}
-[<][/]{NOME}+[>] { printf("tag:%s", yytext);return FECHATAG;}
-[<].+[>];
+(<[\?]xml[ ]version=["]1[\.]0["][ ]encoding=["]ISO[\-]8859[\-]1["][\?]>) ;
 
-[A-Za-z]+[ ]*[A-Za-z]*[ ]*[A-Za-z]* { yylval.string = strdup(yytext);
-printf("string:%s", yytext);
-                            return STRING;}                                                     
+(<[/]*PRESTADOR_CIDADE>) { return BELEM_PRESTADOR_TAG; }
 
-([0-9]+[,]*[0-9]*)|([0-9]+[.]*[0-9]*) { int i; int size = strlen(yytext); 
-                    for(i = 0; i < size; i++)
-                    { 
-                        if(yytext[i] == ',')
-                            yytext[i] = '.';    
-                    }
-                    yylval.number= atof(yytext);
-                    printf("numero:%.2f", yylval.number);
-                    return NUMERO;}
-      
-                               
-[\n];
+(<[/]*TOMADOR_CIDADE>) { return BELEM_TOMADOR_TAG; }   
+                         
+(<[/]*VALOR_SERVICO>) { return BELEM_SERVICO_TAG; }
 
-. ; 
+(<[/]*VALOR_ISS>) { return BELEM_ISS_TAG; }                                                        
+
+[<]{NOME}+[>] { 
+                yylval.string = strdup(yytext); 
+                return ABRETAG;
+              }
+                
+[<][/]{NOME}+[>] { return FECHATAG; }
+
+
+[A-Za-z]+[ ]*[A-Za-z]*[ ]*[A-Za-z]* { 
+                                        yylval.string = strdup(yytext);
+                                        return STRING;
+                                    }                                                     
+
+([0-9]+[,]*[0-9]*)|([0-9]+[.]*[0-9]*) { 
+                                        int i; int size = strlen(yytext); 
+                                        for(i = 0; i < size; i++)
+                                        { 
+                                            if(yytext[i] == ',')
+                                                yytext[i] = '.';    
+                                        }
+                                        yylval.number= atof(yytext);
+                                        //printf("numero:%.2f\n", yylval.number);
+                                        return NUMERO;
+                                      }                             
+[\n] ;
+. ;
 
 %%
 
