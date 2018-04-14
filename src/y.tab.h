@@ -50,9 +50,16 @@ extern int yydebug;
     BELEM_TOMADOR_TAG = 260,
     BELEM_SERVICO_TAG = 261,
     BELEM_ISS_TAG = 262,
-    STRING = 263,
-    ABRETAG = 264,
-    NUMERO = 265
+    CORUMBA_PRESTADOR_ABRETAG = 263,
+    CORUMBA_PRESTADOR_FECHATAG = 264,
+    CORUMBA_GERADOR_ABRETAG = 265,
+    CORUMBA_GERADOR_FECHATAG = 266,
+    CORUMBA_CODIGO_TAG = 267,
+    CORUMBA_SERVICO_TAG = 268,
+    CORUMBA_ISS_TAG = 269,
+    STRING = 270,
+    ABRETAG = 271,
+    NUMERO = 272
   };
 #endif
 /* Tokens.  */
@@ -61,21 +68,28 @@ extern int yydebug;
 #define BELEM_TOMADOR_TAG 260
 #define BELEM_SERVICO_TAG 261
 #define BELEM_ISS_TAG 262
-#define STRING 263
-#define ABRETAG 264
-#define NUMERO 265
+#define CORUMBA_PRESTADOR_ABRETAG 263
+#define CORUMBA_PRESTADOR_FECHATAG 264
+#define CORUMBA_GERADOR_ABRETAG 265
+#define CORUMBA_GERADOR_FECHATAG 266
+#define CORUMBA_CODIGO_TAG 267
+#define CORUMBA_SERVICO_TAG 268
+#define CORUMBA_ISS_TAG 269
+#define STRING 270
+#define ABRETAG 271
+#define NUMERO 272
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 
 union YYSTYPE
 {
-#line 19 "src/main.y" /* yacc.c:1909  */
+#line 21 "src/main.y" /* yacc.c:1909  */
 
     char* string;
     float number;
 
-#line 79 "src/y.tab.h" /* yacc.c:1909  */
+#line 93 "src/y.tab.h" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;
