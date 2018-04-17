@@ -10,63 +10,62 @@ void yyerror(char *);
 
 %}
 
-IGNORA .*[\n]*
-NOME [A-Za-z]+[_]*[:]*
 %%
 
-(<[\?]xml[ ]version=["]1[\.]0["][ ]encoding=["]ISO[\-]8859[\-]1["][\?]>) ;
-(<[\?]xml[ ]version=["]1[\.]0["][ ]encoding=["]UTF[\-]8["][ ]standalone=["]yes["][\?]>) ;
-(<[\?]xml[ ]version=["]1[\.]0["][\?]>) ;
-(<[\?]xml[ ]version=["]1[\.]0["][ ]encoding=["]utf[\-]8["][\?]>) ;
+(<[\?]xml[^>]+[>]) ; // ignora sempre o começo do xml, não considera o primeiro <xml...>
 
-(<[/]*PRESTADOR_CIDADE>) { return BELEM_PRESTADOR_TAG; }
+(<[/]*PRESTADOR_CIDADE>) { return BELEM_PRESTADOR_TAG; } // token da tag municipio prestador de Belem
 
-(<[/]*TOMADOR_CIDADE>) { return BELEM_TOMADOR_TAG; }   
+(<[/]*TOMADOR_CIDADE>) { return BELEM_GERADOR_TAG; } // token da tag municipio gerador de Belem
                          
-(<[/]*VALOR_SERVICO>) { return BELEM_SERVICO_TAG; }
+(<[/]*VALOR_SERVICO>) { return BELEM_SERVICO_TAG; } // token da tag do valor de servico
 
-(<[/]*VALOR_ISS_RET>) { return BELEM_ISS_TAG; }  
+(<[/]*VALOR_ISS_RET>) { return BELEM_ISS_TAG; } // token da tag do valor iss retido
 
-(<(ns3:)*PrestadorServico>) { printf("tag p:%s\n", yytext);return CORUMBA_JOAOMON_PRESTADOR_ABRETAG; }
+(<(ns3:)*PrestadorServico>) { printf("tag p:%s\n", yytext);return CORUMBA_JOAOMON_PRESTADOR_ABRETAG; } // token da abre tag prestador de Corumba/Joao Monlevade
 
-(<[/](ns3:)*PrestadorServico>) { printf("tag p:%s\n", yytext);return CORUMBA_JOAOMON_PRESTADOR_FECHATAG; }
+(<[/](ns3:)*PrestadorServico>) { printf("tag p:%s\n", yytext);return CORUMBA_JOAOMON_PRESTADOR_FECHATAG; } // token de fecha tag prestador de Corumba/Joao Monlevade
 
-(<(ns3:)*Tomador>) { printf("tag t:%s\n", yytext);return CORUMBA_JOAOMON_GERADOR_ABRETAG; }
+(<(ns3:)*CodigoMunicipio>) { printf("tag c:%s\n", yytext);return CORUMBA_JOAOMON_RJ_CODIGO_ABRETAG; } // token da abre tag codigo de municipio de Corumba/Joao Monlevade
 
-(<[/](ns3:)*Tomador>) { printf("tag t:%s\n", yytext);return CORUMBA_JOAOMON_GERADOR_FECHATAG; }
+(<[/](ns3:)*CodigoMunicipio>) { printf("tag c:%s\n", yytext);return CORUMBA_JOAOMON_RJ_CODIGO_FECHATAG; } // token da fecha tag codigo de municipio de Corumba/Joao Monlevade
 
-(<(ns3:)*CodigoMunicipio>) { printf("tag c:%s\n", yytext);return CORUMBA_JOAOMON_CODIGO_ABRETAG; }
+(<[/]*(ns3:)*ValorServicos>) { return CORUMBA_JOAOMON_RJ_SERVICO_TAG; } // token da tag valor de servico de Corumba/Joao Monlevade
 
-(<[/](ns3:)*CodigoMunicipio>) { printf("tag c:%s\n", yytext);return CORUMBA_JOAOMON_CODIGO_FECHATAG; }
+(<[/]*(ns3:)*IssRetido>) {return CORUMBA_JOAOMON_RJ_ISS_TAG; } // token da tag do valor iss retido de Corumba/Joao Monlevade
 
-(<[/]*(ns3:)*ValorServicos>) { return CORUMBA_JOAOMON_SERVICO_TAG; }
+(<prestador>) { return SAOLUIS_PRESTADOR_ABRETAG; }  // token da abre tag prestador de Sao Luis
 
-(<[/]*(ns3:)*IssRetido>) {return CORUMBA_JOAOMON_ISS_TAG; }
+(<[/]prestador>) { return SAOLUIS_PRESTADOR_FECHATAG; }  // token da fecha tag prestador de Sao Luis
 
-(<prestador>) {return SAOLUIS_PRESTADOR_ABRETAG;}
+(<tomador>) { return SAOLUIS_GERADOR_ABRETAG; }  // token da abre tag gerador de Sao Luis
 
-(<[/]prestador>) {return SAOLUIS_PRESTADOR_FECHATAG;}
+(<[/]tomador>) { return SAOLUIS_GERADOR_FECHATAG; }  // token da fecha tag  gerador de Sao Luis
 
-(<tomador>) {return SAOLUIS_GERADOR_ABRETAG;}
+(<descricaoMunicipio>) { return SAOLUIS_MUNICIPIO_ABRETAG; }  // token da abre tag municipio de Sao Luis
 
-(<[/]tomador>) {return SAOLUIS_GERADOR_FECHATAG;}
+(<[/]descricaoMunicipio>) { return SAOLUIS_MUNICIPIO_FECHATAG; } // token da fecha tag municipio de Sao Luis
 
-(<descricaoMunicipio>) {return SAOLUIS_MUNICIPIO_ABRETAG;}
+(<[/]*valorTotalServico>) { return SAOLUIS_SERVICO_TAG; } // token da tag de valor de servico de Sao Luis  
 
-(<[/]descricaoMunicipio>) {return SAOLUIS_MUNICIPIO_FECHATAG;}
+(<IdentificacaoPrestador>) { printf("abreprest:%s\n", yytext);return RIO_PRESTADOR_ABRETAG; } // token da abre tag prestador do Rio de Janeiro
 
-(<[/]*valorTotalServico>) { return SAOLUIS_SERVICO_TAG; }                                              
+(<[/]IdentificacaoPrestador>) { printf("fechaprest:%s\n", yytext);return RIO_PRESTADOR_FECHATAG; } // token da fecha tag prestador do Rio de Janeiro
+
+(<(ns3:)*IdentificacaoTomador>) { return CORUMBA_JOAOMON_RJ_GERADOR_ABRETAG; } // token da abre tag gerador do Rio de Janeiro, Corumba, Joao Monlevade
+
+(<[/](ns3:)*IdentificacaoTomador>) { return CORUMBA_JOAOMON_RJ_GERADOR_FECHATAG; } // token da fecha tag gerador do Rio de Janeiro, Corumba, Joao Monlevade
 
 [<][A-Za-z][^>]+[>] { printf("abre:%s\n", yytext);
-                yylval.string = strdup(yytext); 
-                return ABRETAG;
-              }
+                        yylval.string = strdup(yytext);
+                        return ABRETAG; // token de abre tag caso geral
+                    }
                 
-[<][/][^>]+[>] { printf("fecha:%s\n", yytext);return FECHATAG; }
+[<][/][^>]+[>] { printf("fecha:%s\n", yytext);return FECHATAG; } // token de fecha tag caso geral
 
 [A-Za-z]+[ ]*[A-Za-z]*[ ]*[A-Za-z]* {// printf("string:%s\n", yytext);
                                         yylval.string = strdup(yytext);
-                                        return STRING;
+                                        return STRING; // token de string
                                     }                                                     
 
 ([0-9]+[,]*[0-9]*)|([0-9]+[.]*[0-9]*) { 
@@ -78,7 +77,7 @@ NOME [A-Za-z]+[_]*[:]*
                                         }
                                         yylval.number= atof(yytext);
                                        //printf("numero:%.2f\n", yylval.number);
-                                        return NUMERO;
+                                        return NUMERO; // token para numeros float e ints
 
                                       }
 [\t]* ;                                                                   
