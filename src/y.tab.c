@@ -123,8 +123,8 @@ extern int yydebug;
     CORUMBA_JOAOMON_RJ_GERADOR_FECHATAG = 267,
     CORUMBA_JOAOMON_RJ_CODIGO_ABRETAG = 268,
     CORUMBA_JOAOMON_RJ_CODIGO_FECHATAG = 269,
-    CORUMBA_JOAOMON_RJ_SERVICO_TAG = 270,
-    CORUMBA_JOAOMON_RJ_ISS_TAG = 271,
+    CORUMBA_JOAOMON_RJ_PARAUAPEBAS_SERVICO_TAG = 270,
+    CORUMBA_JOAOMON_RJ_NOVALIMA_ISS_TAG = 271,
     SAOLUIS_PRESTADOR_ABRETAG = 272,
     SAOLUIS_PRESTADOR_FECHATAG = 273,
     SAOLUIS_GERADOR_ABRETAG = 274,
@@ -134,8 +134,12 @@ extern int yydebug;
     SAOLUIS_SERVICO_TAG = 278,
     RIO_PRESTADOR_ABRETAG = 279,
     RIO_PRESTADOR_FECHATAG = 280,
-    STRING = 281,
-    NUMERO = 282
+    PARAUAPEBAS_PRESTADOR_TAG = 281,
+    PARAUAPEBAS_GERADOR_TAG = 282,
+    PARAUAPEBAS_SERVICO_TAG = 283,
+    PARAUAPEBAS_ISS_TAG = 284,
+    STRING = 285,
+    NUMERO = 286
   };
 #endif
 /* Tokens.  */
@@ -151,8 +155,8 @@ extern int yydebug;
 #define CORUMBA_JOAOMON_RJ_GERADOR_FECHATAG 267
 #define CORUMBA_JOAOMON_RJ_CODIGO_ABRETAG 268
 #define CORUMBA_JOAOMON_RJ_CODIGO_FECHATAG 269
-#define CORUMBA_JOAOMON_RJ_SERVICO_TAG 270
-#define CORUMBA_JOAOMON_RJ_ISS_TAG 271
+#define CORUMBA_JOAOMON_RJ_PARAUAPEBAS_SERVICO_TAG 270
+#define CORUMBA_JOAOMON_RJ_NOVALIMA_ISS_TAG 271
 #define SAOLUIS_PRESTADOR_ABRETAG 272
 #define SAOLUIS_PRESTADOR_FECHATAG 273
 #define SAOLUIS_GERADOR_ABRETAG 274
@@ -162,20 +166,24 @@ extern int yydebug;
 #define SAOLUIS_SERVICO_TAG 278
 #define RIO_PRESTADOR_ABRETAG 279
 #define RIO_PRESTADOR_FECHATAG 280
-#define STRING 281
-#define NUMERO 282
+#define PARAUAPEBAS_PRESTADOR_TAG 281
+#define PARAUAPEBAS_GERADOR_TAG 282
+#define PARAUAPEBAS_SERVICO_TAG 283
+#define PARAUAPEBAS_ISS_TAG 284
+#define STRING 285
+#define NUMERO 286
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 
 union YYSTYPE
 {
-#line 25 "src/main.y" /* yacc.c:355  */
+#line 27 "src/main.y" /* yacc.c:355  */
 
     char* string;
     float number;
 
-#line 179 "src/y.tab.c" /* yacc.c:355  */
+#line 187 "src/y.tab.c" /* yacc.c:355  */
 };
 
 typedef union YYSTYPE YYSTYPE;
@@ -192,7 +200,7 @@ int yyparse (void);
 
 /* Copy the second part of user declarations.  */
 
-#line 196 "src/y.tab.c" /* yacc.c:358  */
+#line 204 "src/y.tab.c" /* yacc.c:358  */
 
 #ifdef short
 # undef short
@@ -434,21 +442,21 @@ union yyalloc
 /* YYFINAL -- State number of the termination state.  */
 #define YYFINAL  2
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   206
+#define YYLAST   75
 
 /* YYNTOKENS -- Number of terminals.  */
-#define YYNTOKENS  28
+#define YYNTOKENS  32
 /* YYNNTS -- Number of nonterminals.  */
-#define YYNNTS  18
+#define YYNNTS  22
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  37
+#define YYNRULES  44
 /* YYNSTATES -- Number of states.  */
-#define YYNSTATES  67
+#define YYNSTATES  82
 
 /* YYTRANSLATE[YYX] -- Symbol number corresponding to YYX as returned
    by yylex, with out-of-bounds checking.  */
 #define YYUNDEFTOK  2
-#define YYMAXUTOK   282
+#define YYMAXUTOK   286
 
 #define YYTRANSLATE(YYX)                                                \
   ((unsigned int) (YYX) <= YYMAXUTOK ? yytranslate[YYX] : YYUNDEFTOK)
@@ -485,17 +493,18 @@ static const yytype_uint8 yytranslate[] =
        2,     2,     2,     2,     2,     2,     1,     2,     3,     4,
        5,     6,     7,     8,     9,    10,    11,    12,    13,    14,
       15,    16,    17,    18,    19,    20,    21,    22,    23,    24,
-      25,    26,    27
+      25,    26,    27,    28,    29,    30,    31
 };
 
 #if YYDEBUG
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    35,    35,    49,    53,    54,    55,    56,    59,    62,
-      63,    64,    65,    66,    67,    68,    69,    70,    71,    72,
-      73,    74,    75,    76,    82,    87,    92,    95,    99,   129,
-     132,   136,   139,   142,   147,   152,   157,   162
+       0,    37,    37,    52,    56,    57,    58,    59,    62,    63,
+      64,    65,    66,    67,    68,    69,    70,    71,    72,    73,
+      74,    75,    76,    77,    78,    79,    80,    85,    90,    95,
+      98,   102,   107,   112,   115,   119,   146,   149,   153,   156,
+     159,   163,   168,   173,   178
 };
 #endif
 
@@ -511,17 +520,21 @@ static const char *const yytname[] =
   "CORUMBA_JOAOMON_RJ_GERADOR_ABRETAG",
   "CORUMBA_JOAOMON_RJ_GERADOR_FECHATAG",
   "CORUMBA_JOAOMON_RJ_CODIGO_ABRETAG",
-  "CORUMBA_JOAOMON_RJ_CODIGO_FECHATAG", "CORUMBA_JOAOMON_RJ_SERVICO_TAG",
-  "CORUMBA_JOAOMON_RJ_ISS_TAG", "SAOLUIS_PRESTADOR_ABRETAG",
+  "CORUMBA_JOAOMON_RJ_CODIGO_FECHATAG",
+  "CORUMBA_JOAOMON_RJ_PARAUAPEBAS_SERVICO_TAG",
+  "CORUMBA_JOAOMON_RJ_NOVALIMA_ISS_TAG", "SAOLUIS_PRESTADOR_ABRETAG",
   "SAOLUIS_PRESTADOR_FECHATAG", "SAOLUIS_GERADOR_ABRETAG",
   "SAOLUIS_GERADOR_FECHATAG", "SAOLUIS_MUNICIPIO_ABRETAG",
   "SAOLUIS_MUNICIPIO_FECHATAG", "SAOLUIS_SERVICO_TAG",
-  "RIO_PRESTADOR_ABRETAG", "RIO_PRESTADOR_FECHATAG", "STRING", "NUMERO",
+  "RIO_PRESTADOR_ABRETAG", "RIO_PRESTADOR_FECHATAG",
+  "PARAUAPEBAS_PRESTADOR_TAG", "PARAUAPEBAS_GERADOR_TAG",
+  "PARAUAPEBAS_SERVICO_TAG", "PARAUAPEBAS_ISS_TAG", "STRING", "NUMERO",
   "$accept", "PROGRAMA", "ELEMENTO", "TAG", "PRESTADOR_BELEM",
-  "GERADOR_BELEM", "SERVICO_BELEM", "ISS_BELEM",
+  "GERADOR_BELEM", "SERVICO_BELEM", "ISS_BELEM", "PRESTADOR_PARAUAPEBAS",
+  "GERADOR_PARAUAPEBAS", "SERVICO_PARAUAPEBAS", "ISS_PARAUAPEBAS",
   "CODIGO_CORUMBA_JOAOMON_RJ", "PRESTADOR_CORUMBA_JOAOMON",
   "GERADOR_CORUMBA_JOAOMON_RJ", "SERVICO_CORUMBA_JOAOMON_RJ",
-  "ISS_CORUMBA_JOAOMON_RJ", "PRESTADOR_RIO", "MUNICIPIO_SAOLUIS",
+  "ISS_CORUMBA_JOAOMON_RJ_NOVALIMA", "PRESTADOR_RIO", "MUNICIPIO_SAOLUIS",
   "PRESTADOR_SAOLUIS", "GERADOR_SAOLUIS", "SERVICO_SAOLUIS", YY_NULLPTR
 };
 #endif
@@ -533,14 +546,15 @@ static const yytype_uint16 yytoknum[] =
 {
        0,   256,   257,   258,   259,   260,   261,   262,   263,   264,
      265,   266,   267,   268,   269,   270,   271,   272,   273,   274,
-     275,   276,   277,   278,   279,   280,   281,   282
+     275,   276,   277,   278,   279,   280,   281,   282,   283,   284,
+     285,   286
 };
 # endif
 
-#define YYPACT_NINF -20
+#define YYPACT_NINF -30
 
 #define yypact_value_is_default(Yystate) \
-  (!!((Yystate) == (-20)))
+  (!!((Yystate) == (-30)))
 
 #define YYTABLE_NINF -1
 
@@ -549,15 +563,17 @@ static const yytype_uint16 yytoknum[] =
 
   /* YYPACT[STATE-NUM] -- Index in YYTABLE of the portion describing
      STATE-NUM.  */
-static const yytype_int16 yypact[] =
+static const yytype_int8 yypact[] =
 {
-     -20,   172,   -20,   147,   -19,   -17,   -16,   -12,   147,   147,
-     -10,    -8,    -5,   147,   147,     0,     7,   147,   -20,   -20,
-     -20,   -20,   -20,   -20,   -20,   -20,   -20,   -20,   -20,   -20,
-     -20,   -20,   -20,   -20,   -20,    -3,   -20,    31,    34,    35,
-      36,    22,    47,    33,    42,    45,    72,    97,    29,    44,
-     122,   -20,   147,   -20,   -20,   -20,   -20,   -20,   -20,   -20,
-     -20,   -20,   -20,   -20,   -20,   -20,   -20
+     -30,     0,   -30,   -29,   -26,   -16,   -13,    -9,   -29,   -29,
+      -6,     3,    17,   -29,   -29,     1,    19,   -29,    21,    26,
+      27,    28,   -30,   -30,   -30,   -30,   -30,   -30,   -30,   -30,
+     -30,   -30,   -30,   -30,   -30,   -30,   -30,   -30,   -30,   -30,
+     -30,   -30,   -30,     6,    52,    54,    55,    53,     2,     8,
+      49,    50,    48,    12,    24,    44,    45,    22,    41,    42,
+      43,    46,   -30,   -29,   -30,   -30,   -30,   -30,   -30,   -30,
+     -30,   -30,   -30,   -30,   -30,   -30,   -30,   -30,   -30,   -30,
+     -30,   -30
 };
 
   /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
@@ -565,27 +581,31 @@ static const yytype_int16 yypact[] =
      means the default is an error.  */
 static const yytype_uint8 yydefact[] =
 {
-       3,     0,     1,     8,     0,     0,     0,     0,     8,     8,
-       0,     0,     0,     8,     8,     0,     0,     8,     2,    10,
-       9,    11,    12,    18,    21,    22,    19,    20,    17,    16,
-      14,    13,    15,     4,     5,     0,     6,     0,     0,     0,
+       3,     0,     1,     7,     0,     0,     0,     0,     7,     7,
+       0,     0,     0,     7,     7,     0,     0,     7,     0,     0,
+       0,     0,     2,     9,     8,    10,    11,    13,    12,    14,
+      15,    21,    24,    25,    22,    23,    20,    19,    17,    16,
+      18,     4,     5,     0,     0,     0,     0,     0,     0,     0,
        0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
-       0,    23,     7,    24,    25,    26,    27,    29,    30,    28,
-      31,    32,    35,    36,    34,    37,    33
+       0,     0,    26,     6,    27,    28,    29,    30,    36,    37,
+      35,    38,    39,    42,    43,    41,    44,    40,    31,    32,
+      33,    34
 };
 
   /* YYPGOTO[NTERM-NUM].  */
-static const yytype_int16 yypgoto[] =
+static const yytype_int8 yypgoto[] =
 {
-     -20,   -20,   189,    64,   -20,   -20,   -20,   -20,   -20,   -20,
-     -20,   -20,   -20,   -20,   -20,   -20,   -20,   -20
+     -30,   -30,    32,   -30,   -30,   -30,   -30,   -30,   -30,   -30,
+     -30,   -30,   -30,   -30,   -30,   -30,   -30,   -30,   -30,   -30,
+     -30,   -30
 };
 
   /* YYDEFGOTO[NTERM-NUM].  */
 static const yytype_int8 yydefgoto[] =
 {
-      -1,     1,    52,    36,    19,    20,    21,    22,    23,    24,
-      25,    26,    27,    28,    29,    30,    31,    32
+      -1,     1,    63,    22,    23,    24,    25,    26,    27,    28,
+      29,    30,    31,    32,    33,    34,    35,    36,    37,    38,
+      39,    40
 };
 
   /* YYTABLE[YYPACT[STATE-NUM]] -- What to do in state STATE-NUM.  If
@@ -593,83 +613,61 @@ static const yytype_int8 yydefgoto[] =
      number is the opposite.  If YYTABLE_NINF, syntax error.  */
 static const yytype_uint8 yytable[] =
 {
-       3,    51,     4,     5,     6,     7,     8,    37,     9,    38,
-      10,    39,    11,    12,    13,    40,    14,    43,    15,    44,
-      16,    17,    45,    33,    34,     3,    48,     4,     5,     6,
-       7,     8,    57,     9,    49,    10,    53,    11,    12,    13,
-      54,    14,    55,    15,    56,    16,    17,    59,    33,    34,
-       3,    64,     4,     5,     6,     7,     8,    60,     9,    58,
-      10,    61,    11,    12,    13,    18,    14,    65,    15,     0,
-      16,    17,     0,    33,    34,     3,     0,     4,     5,     6,
-       7,     8,     0,     9,     0,    10,     0,    11,    12,    13,
-      62,    14,     0,    15,     0,    16,    17,     0,    33,    34,
-       3,     0,     4,     5,     6,     7,     8,     0,     9,     0,
-      10,     0,    11,    12,    13,     0,    14,    63,    15,     0,
-      16,    17,     0,    33,    34,     3,     0,     4,     5,     6,
-       7,     8,     0,     9,     0,    10,     0,    11,    12,    13,
-       0,    14,     0,    15,     0,    16,    17,    66,    33,    34,
-       3,     0,     4,     5,     6,     7,     8,     0,     9,     0,
-      10,     0,    11,    12,    13,     0,    14,     0,    15,     0,
-      16,    17,     2,    33,    34,     3,     0,     4,     5,     6,
-       7,     8,     0,     9,     0,    10,     0,    11,    12,    13,
-       0,    14,    35,    15,     0,    16,    17,    41,    42,     0,
-       0,     0,    46,    47,     0,     0,    50
+       2,    41,    42,     3,    44,     4,     5,     6,     7,     8,
+      62,     9,    68,    10,    45,    11,    12,    13,    46,    14,
+      69,    15,    47,    16,    17,    50,    18,    19,    20,    21,
+      73,    55,    41,    42,    51,    43,    41,    42,    41,    42,
+      48,    49,    41,    42,    74,    53,    54,    77,    52,    57,
+      56,    58,    41,    42,    41,    42,    59,    64,    60,    61,
+      65,    67,    66,    70,    72,    71,    75,    78,    76,    79,
+       0,    80,     0,     0,     0,    81
 };
 
 static const yytype_int8 yycheck[] =
 {
-       3,     4,     5,     6,     7,     8,     9,    26,    11,    26,
-      13,    27,    15,    16,    17,    27,    19,    27,    21,    27,
-      23,    24,    27,    26,    27,     3,    26,     5,     6,     7,
-       8,     9,    10,    11,    27,    13,     5,    15,    16,    17,
-       6,    19,     7,    21,     8,    23,    24,    14,    26,    27,
-       3,    22,     5,     6,     7,     8,     9,    15,    11,    12,
-      13,    16,    15,    16,    17,     1,    19,    23,    21,    -1,
-      23,    24,    -1,    26,    27,     3,    -1,     5,     6,     7,
-       8,     9,    -1,    11,    -1,    13,    -1,    15,    16,    17,
-      18,    19,    -1,    21,    -1,    23,    24,    -1,    26,    27,
-       3,    -1,     5,     6,     7,     8,     9,    -1,    11,    -1,
-      13,    -1,    15,    16,    17,    -1,    19,    20,    21,    -1,
-      23,    24,    -1,    26,    27,     3,    -1,     5,     6,     7,
-       8,     9,    -1,    11,    -1,    13,    -1,    15,    16,    17,
-      -1,    19,    -1,    21,    -1,    23,    24,    25,    26,    27,
-       3,    -1,     5,     6,     7,     8,     9,    -1,    11,    -1,
-      13,    -1,    15,    16,    17,    -1,    19,    -1,    21,    -1,
-      23,    24,     0,    26,    27,     3,    -1,     5,     6,     7,
-       8,     9,    -1,    11,    -1,    13,    -1,    15,    16,    17,
-      -1,    19,     3,    21,    -1,    23,    24,     8,     9,    -1,
-      -1,    -1,    13,    14,    -1,    -1,    17
+       0,    30,    31,     3,    30,     5,     6,     7,     8,     9,
+       4,    11,    10,    13,    30,    15,    16,    17,    31,    19,
+      12,    21,    31,    23,    24,    31,    26,    27,    28,    29,
+      18,    30,    30,    31,    31,     3,    30,    31,    30,    31,
+       8,     9,    30,    31,    20,    13,    14,    25,    31,    17,
+      31,    30,    30,    31,    30,    31,    30,     5,    31,    31,
+       6,     8,     7,    14,    16,    15,    22,    26,    23,    27,
+      -1,    28,    -1,    -1,    -1,    29
 };
 
   /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
      symbol of state STATE-NUM.  */
 static const yytype_uint8 yystos[] =
 {
-       0,    29,     0,     3,     5,     6,     7,     8,     9,    11,
-      13,    15,    16,    17,    19,    21,    23,    24,    31,    32,
-      33,    34,    35,    36,    37,    38,    39,    40,    41,    42,
-      43,    44,    45,    26,    27,    30,    31,    26,    26,    27,
-      27,    30,    30,    27,    27,    27,    30,    30,    26,    27,
-      30,     4,    30,     5,     6,     7,     8,    10,    12,    14,
-      15,    16,    18,    20,    22,    23,    25
+       0,    33,     0,     3,     5,     6,     7,     8,     9,    11,
+      13,    15,    16,    17,    19,    21,    23,    24,    26,    27,
+      28,    29,    35,    36,    37,    38,    39,    40,    41,    42,
+      43,    44,    45,    46,    47,    48,    49,    50,    51,    52,
+      53,    30,    31,    34,    30,    30,    31,    31,    34,    34,
+      31,    31,    31,    34,    34,    30,    31,    34,    30,    30,
+      31,    31,     4,    34,     5,     6,     7,     8,    10,    12,
+      14,    15,    16,    18,    20,    22,    23,    25,    26,    27,
+      28,    29
 };
 
   /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
 static const yytype_uint8 yyr1[] =
 {
-       0,    28,    29,    29,    30,    30,    30,    30,    30,    31,
-      31,    31,    31,    31,    31,    31,    31,    31,    31,    31,
-      31,    31,    31,    31,    32,    33,    34,    35,    36,    37,
-      38,    39,    40,    41,    42,    43,    44,    45
+       0,    32,    33,    33,    34,    34,    34,    34,    35,    35,
+      35,    35,    35,    35,    35,    35,    35,    35,    35,    35,
+      35,    35,    35,    35,    35,    35,    35,    36,    37,    38,
+      39,    40,    41,    42,    43,    44,    45,    46,    47,    48,
+      49,    50,    51,    52,    53
 };
 
   /* YYR2[YYN] -- Number of symbols on the right hand side of rule YYN.  */
 static const yytype_uint8 yyr2[] =
 {
-       0,     2,     2,     0,     1,     1,     1,     2,     0,     1,
+       0,     2,     2,     0,     1,     1,     2,     0,     1,     1,
        1,     1,     1,     1,     1,     1,     1,     1,     1,     1,
-       1,     1,     1,     3,     3,     3,     3,     3,     3,     3,
-       3,     3,     3,     3,     3,     3,     3,     3
+       1,     1,     1,     1,     1,     1,     3,     3,     3,     3,
+       3,     3,     3,     3,     3,     3,     3,     3,     3,     3,
+       3,     3,     3,     3,     3
 };
 
 
@@ -1346,81 +1344,87 @@ yyreduce:
   switch (yyn)
     {
         case 2:
-#line 35 "src/main.y" /* yacc.c:1646  */
-    { 
-                        if(flag == 0 && flag1 == 0)// padrao belem, corumba, joao monlevade
-                        {
-                            printf("%s,%s,%.2f,%.2f\n", municipio_gerador, municipio_prestador, valor_servico, valor_iss);
-                        
-                        }else if(flag == 1 && flag1 == 0) // caso seja padrao Sao Luis, nao tem o valor de iss retido
-                        {
-                            printf("%s,%s,%.2f,ISS Retido desconhecido\n", municipio_gerador, municipio_prestador, valor_servico);
-                        }else if(flag1 == 1) // padrao rio de janeiro
-                        {
-                            printf("%s,%s,%.2f,%.2f\n", municipio_gerador_rj, municipio_prestador_rj, valor_servico, valor_iss);
-                        }
-                        
-                        ; }
-#line 1365 "src/y.tab.c" /* yacc.c:1646  */
+#line 38 "src/main.y" /* yacc.c:1646  */
+    {
+            if(flag == 0 && flag1 == 0)// padrao belem, corumba, joao monlevade
+            {
+                printf("%s,%s,%.2f,%.2f\n", municipio_gerador, municipio_prestador, valor_servico, valor_iss);
+
+            }else if(flag == 1 && flag1 == 0) // caso seja padrao Sao Luis, nao tem o valor de iss retido
+            {
+                printf("%s,%s,%.2f,ISS Retido desconhecido\n", municipio_gerador, municipio_prestador, valor_servico);
+
+            }else if(flag1 == 1) // padrao rio de janeiro
+            {
+                printf("%s,%s,%.2f,%.2f\n", municipio_gerador_rj, municipio_prestador_rj, valor_servico, valor_iss);
+            };
+        }
+#line 1363 "src/y.tab.c" /* yacc.c:1646  */
     break;
 
-  case 5:
-#line 54 "src/main.y" /* yacc.c:1646  */
-    {(yyval.number) = (yyvsp[0].number);}
-#line 1371 "src/y.tab.c" /* yacc.c:1646  */
-    break;
-
-  case 7:
-#line 56 "src/main.y" /* yacc.c:1646  */
-    {(yyval.number) = (yyvsp[-1].number);}
-#line 1377 "src/y.tab.c" /* yacc.c:1646  */
-    break;
-
-  case 17:
-#line 70 "src/main.y" /* yacc.c:1646  */
-    {(yyval.number) = (yyvsp[0].number);}
-#line 1383 "src/y.tab.c" /* yacc.c:1646  */
-    break;
-
-  case 18:
-#line 71 "src/main.y" /* yacc.c:1646  */
-    {(yyval.number) = (yyvsp[0].number);}
-#line 1389 "src/y.tab.c" /* yacc.c:1646  */
-    break;
-
-  case 24:
-#line 82 "src/main.y" /* yacc.c:1646  */
+  case 27:
+#line 85 "src/main.y" /* yacc.c:1646  */
     {
                                                                 municipio_prestador = malloc(sizeof(char));
-                                                                strcpy(municipio_prestador, (yyvsp[-1].string));        
+                                                                strcpy(municipio_prestador, (yyvsp[-1].string));
                                                             }
-#line 1398 "src/y.tab.c" /* yacc.c:1646  */
+#line 1372 "src/y.tab.c" /* yacc.c:1646  */
     break;
 
-  case 25:
-#line 87 "src/main.y" /* yacc.c:1646  */
+  case 28:
+#line 90 "src/main.y" /* yacc.c:1646  */
     {
                                                             municipio_gerador = malloc(sizeof(char));
                                                             strcpy(municipio_gerador, (yyvsp[-1].string));
                                                        }
-#line 1407 "src/y.tab.c" /* yacc.c:1646  */
+#line 1381 "src/y.tab.c" /* yacc.c:1646  */
     break;
 
-  case 26:
-#line 92 "src/main.y" /* yacc.c:1646  */
-    { valor_servico = (yyvsp[-1].number); }
-#line 1413 "src/y.tab.c" /* yacc.c:1646  */
-    break;
-
-  case 27:
+  case 29:
 #line 95 "src/main.y" /* yacc.c:1646  */
-    { valor_iss = (yyvsp[-1].number); }
-#line 1419 "src/y.tab.c" /* yacc.c:1646  */
+    { valor_servico = (yyvsp[-1].number); }
+#line 1387 "src/y.tab.c" /* yacc.c:1646  */
     break;
 
-  case 28:
-#line 100 "src/main.y" /* yacc.c:1646  */
-    { 
+  case 30:
+#line 98 "src/main.y" /* yacc.c:1646  */
+    { valor_iss = (yyvsp[-1].number); }
+#line 1393 "src/y.tab.c" /* yacc.c:1646  */
+    break;
+
+  case 31:
+#line 102 "src/main.y" /* yacc.c:1646  */
+    {
+                                                              municipio_prestador = malloc(sizeof(char));
+                                                              strcpy(municipio_prestador, (yyvsp[-1].string));
+                                                              }
+#line 1402 "src/y.tab.c" /* yacc.c:1646  */
+    break;
+
+  case 32:
+#line 107 "src/main.y" /* yacc.c:1646  */
+    {
+                                                              municipio_gerador = malloc(sizeof(char));
+                                                              strcpy(municipio_gerador, (yyvsp[-1].string));
+                                                              }
+#line 1411 "src/y.tab.c" /* yacc.c:1646  */
+    break;
+
+  case 33:
+#line 112 "src/main.y" /* yacc.c:1646  */
+    { valor_servico = (yyvsp[-1].number); }
+#line 1417 "src/y.tab.c" /* yacc.c:1646  */
+    break;
+
+  case 34:
+#line 115 "src/main.y" /* yacc.c:1646  */
+    { valor_iss = (yyvsp[-1].number); }
+#line 1423 "src/y.tab.c" /* yacc.c:1646  */
+    break;
+
+  case 35:
+#line 120 "src/main.y" /* yacc.c:1646  */
+    {
                         codigo[i]= (yyvsp[-1].number);
                         if(i == 0)
                         {
@@ -1435,77 +1439,74 @@ yyreduce:
                         {
                             municipio_gerador_rj = malloc(sizeof(char));
                             sprintf(municipio_gerador_rj, "%d", codigo[2]);
-                        
-                        
+
                         }else if(i == 3)
                         {
                             municipio_gerador = malloc(sizeof(char));
-                    
                             sprintf(municipio_gerador, "%d", codigo[3]);
-                   
                         }
 
                         i++;
                     }
-#line 1451 "src/y.tab.c" /* yacc.c:1646  */
+#line 1452 "src/y.tab.c" /* yacc.c:1646  */
     break;
 
-  case 31:
-#line 136 "src/main.y" /* yacc.c:1646  */
+  case 38:
+#line 153 "src/main.y" /* yacc.c:1646  */
     { valor_servico = (yyvsp[-1].number); }
-#line 1457 "src/y.tab.c" /* yacc.c:1646  */
+#line 1458 "src/y.tab.c" /* yacc.c:1646  */
     break;
 
-  case 32:
-#line 139 "src/main.y" /* yacc.c:1646  */
+  case 39:
+#line 156 "src/main.y" /* yacc.c:1646  */
     { valor_iss = (yyvsp[-1].number); }
-#line 1463 "src/y.tab.c" /* yacc.c:1646  */
+#line 1464 "src/y.tab.c" /* yacc.c:1646  */
     break;
 
-  case 33:
-#line 142 "src/main.y" /* yacc.c:1646  */
-    {flag1 = 1;}
-#line 1469 "src/y.tab.c" /* yacc.c:1646  */
+  case 40:
+#line 159 "src/main.y" /* yacc.c:1646  */
+    { flag1 = 1; }
+#line 1470 "src/y.tab.c" /* yacc.c:1646  */
     break;
 
-  case 34:
-#line 147 "src/main.y" /* yacc.c:1646  */
-    { 
+  case 41:
+#line 163 "src/main.y" /* yacc.c:1646  */
+    {
                                                                                 municipio_aux = malloc(sizeof(char));
                                                                                 strcpy(municipio_aux, (yyvsp[-1].string));
                                                                             }
-#line 1478 "src/y.tab.c" /* yacc.c:1646  */
+#line 1479 "src/y.tab.c" /* yacc.c:1646  */
     break;
 
-  case 35:
-#line 152 "src/main.y" /* yacc.c:1646  */
+  case 42:
+#line 168 "src/main.y" /* yacc.c:1646  */
     {
                                                                                 municipio_prestador = malloc(sizeof(char));
-                                                                                strcpy(municipio_prestador, municipio_aux);        
+                                                                                strcpy(municipio_prestador, municipio_aux);
                                                                               }
-#line 1487 "src/y.tab.c" /* yacc.c:1646  */
+#line 1488 "src/y.tab.c" /* yacc.c:1646  */
     break;
 
-  case 36:
-#line 157 "src/main.y" /* yacc.c:1646  */
+  case 43:
+#line 173 "src/main.y" /* yacc.c:1646  */
     {
                                                                         municipio_gerador = malloc(sizeof(char));
                                                                         strcpy(municipio_gerador, municipio_aux);
                                                                       }
-#line 1496 "src/y.tab.c" /* yacc.c:1646  */
+#line 1497 "src/y.tab.c" /* yacc.c:1646  */
     break;
 
-  case 37:
-#line 162 "src/main.y" /* yacc.c:1646  */
-    { 
-                                                            valor_servico = (yyvsp[-1].number); 
+  case 44:
+#line 178 "src/main.y" /* yacc.c:1646  */
+    {
+                                                            valor_servico = (yyvsp[-1].number);
                                                             flag = 1;
                                                            }
-#line 1505 "src/y.tab.c" /* yacc.c:1646  */
+#line 1506 "src/y.tab.c" /* yacc.c:1646  */
     break;
 
 
-#line 1509 "src/y.tab.c" /* yacc.c:1646  */
+#line 1510 "src/y.tab.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1733,19 +1734,19 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 168 "src/main.y" /* yacc.c:1906  */
+#line 186 "src/main.y" /* yacc.c:1906  */
 
 
-void yyerror(char *s) 
+void yyerror(char *s)
 {
     printf("ERRO\n"); // em caso de lista invalida, print ERRO
 }
 
-int main() 
+int main()
 {
     yyparse();
     free(municipio_gerador);
     free(municipio_prestador);
-    
+
     return 0;
 }
